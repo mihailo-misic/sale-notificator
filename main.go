@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/anaskhan96/soup"
 	"github.com/kevinburke/twilio-go"
+	"github.com/mihailo-misic/sale-notificator/env"
 	"log"
 	"strings"
 )
@@ -33,7 +34,7 @@ var Watches = []Watch{
 }
 
 func init() {
-	client = twilio.NewClient(sid, token, nil)
+	client = twilio.NewClient(env.Sid, env.Token, nil)
 }
 
 func main() {
@@ -61,9 +62,9 @@ func main() {
 	}
 
 	// Send a message via Twilio
-	if _, err := client.Messages.SendMessage(twilioNum, myNum, msg, nil); err != nil {
+	if _, err := client.Messages.SendMessage(env.TwilioNum, env.SendNum, msg, nil); err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Sent Successfully to", myNum)
+	fmt.Println("Sent Successfully to", env.SendNum)
 }
