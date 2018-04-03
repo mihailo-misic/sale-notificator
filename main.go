@@ -39,7 +39,7 @@ func init() {
 }
 
 func main() {
-	t := time.Now()
+	t := time.Now().Format("2006-01-02 15:04:05")
 	fmt.Println()
 	msg := "Sale:\n"
 	send := false
@@ -62,7 +62,7 @@ func main() {
 
 	// Don't send if non are on sale.
 	if !send {
-		fmt.Printf("[%s] Nothing's on sale.\n", t.Format("2006-01-02 15:04:05"))
+		fmt.Printf("[%s] Nothing's on sale.\n", t)
 		os.Exit(1)
 	}
 
@@ -72,5 +72,5 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println("Sent Successfully to", env.SendNum)
+	fmt.Printf("[%s] Sent Successfully to %s\n", t, env.SendNum)
 }
