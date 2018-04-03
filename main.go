@@ -7,6 +7,7 @@ import (
 	"github.com/mihailo-misic/sale-notificator/env"
 	"os"
 	"strings"
+	"time"
 )
 
 var client *twilio.Client
@@ -38,6 +39,8 @@ func init() {
 }
 
 func main() {
+	t := time.Now()
+	fmt.Println()
 	msg := "Sale:\n"
 	send := false
 
@@ -59,7 +62,7 @@ func main() {
 
 	// Don't send if non are on sale.
 	if !send {
-		fmt.Println("Nothing's on sale.")
+		fmt.Printf("[%s] Nothing's on sale.\n", t.Format("2006-01-02 15:04:05"))
 		os.Exit(1)
 	}
 
