@@ -9,5 +9,6 @@ This application's purpose is to notify me on email once something of interest i
 ### Setup
 1. Copy `env/env.example` into `env/env.go` and set your variables
 2. Download all the necessary modules
-
-    ```go mod tidy```
+    ```
+    go mod tidy
+    ```
